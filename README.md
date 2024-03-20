@@ -2,7 +2,7 @@
 ```bash
 ## docker
 docker compose up
-## docker compose down
+# docker compose down
 
 ## drizzle commands
 ## generate migrations based on schema
