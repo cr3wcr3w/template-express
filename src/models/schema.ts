@@ -5,7 +5,7 @@ export type HelloType = {
 	message: string
 }
 
-export const userTable = pgTable("user", {
+export const helloTable = pgTable("hello", {
   id: text("id").primaryKey(),
   message: text("message"),
 });
