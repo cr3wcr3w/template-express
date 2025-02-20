@@ -1,40 +1,37 @@
 {
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.7",
+    "globals": "^16.0.0",
+    "prettier": "3.5.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
+  },
   "name": "template-express",
-  "description": "",
   "version": "1.0.0",
-  "main": "app.js",
-  "keywords": [],
-  "author": "K3ndev",
-  "license": "ISC",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/app.ts",
     "build": "tsc",
     "start": "node ./dist/app.js",
-    "drizzle:generate": "drizzle-kit generate:pg",
-    "drizzle:push": "drizzle-kit push:pg",
-    "drizzle:studio": "drizzle-kit studio --port 1234"
+    "prettier:write": "npx prettier . --write",
+    "prettier:check": "prettier . --check",
+    "lint:check": "eslint 'src/**/*.ts'"
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.30.2",
-    "express": "^4.18.3",
-    "pg": "^8.11.3",
-    "postgres": "^3.4.3",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.11.28",
-    "@types/pg": "^8.11.2",
-    "@types/swagger-jsdoc": "^6.0.4",
-    "@types/swagger-ui-express": "^4.1.6",
-    "drizzle-kit": "^0.20.14",
-    "tsx": "^4.7.1",
-    "typescript": "^5.4.2"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
