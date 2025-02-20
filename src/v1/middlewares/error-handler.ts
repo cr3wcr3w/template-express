@@ -8,11 +8,7 @@ const API_VERSION = "v1"; // Change this based on your API version
  * Global error handling middleware for Express.
  * Logs errors to a file and returns a standardized JSON response.
  */
-export function errorHandler(
-  err: Error,
-  req: Request,
-  res: Response,
-) {
+export function errorHandler(err: Error, req: Request, res: Response) {
   const timestamp = new Date().toISOString();
   const userAgent = req.get("User-Agent") || "Unknown User-Agent";
   const ip = req.ip || "Unknown IP";
