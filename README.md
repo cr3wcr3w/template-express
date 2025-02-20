@@ -1,37 +1,42 @@
-## Getting started
-```bash
-## docker
-docker compose up
-# docker compose down
+# 🚀 Express API Template
 
-## drizzle commands
-## generate migrations based on schema
-# pnpm run drizzle:generate
-## push your schema changes directly to the database
-pnpm run drizzle:push
-## explore your database in UI mode in local.drizzle.studio/?port=1234
-pnpm run drizzle:studio
+A simple Express.js API template with **TypeScript**, **Zod**, **Swagger**
 
-## run development mode in localhost:3000
-pnpm run dev
-## build for production
-# pnpm run build
-## start the application in localhost:3000
-# pnpm run start
+## 📦 Tech Stack
 
-## swagger: :3000/api-docs
+- **TypeScript**
+- **Express.js**
+- **Swagger (API Documentation)**
+
+## ⚙️ Setup
+
+### 1️⃣ Install Dependencies
+
+```sh
+npm install
 ```
 
-## This templates use the following stack:
-  - Language: TypeScript
-  - Backend: Express.js
-  - ORM: Drizzle
-  - Package Manager: pnpm
-  - Local Database: Docker Compose
-  - Documentation: Swagger
+### Start the Server
 
-## This repository has different branches:
-  - [ ] feat/lucia-auth
-  - [ ] feat/file-upload
-  - [ ] feat/web-socket
+```sh
+npm dev
+```
 
+### Build server
+
+```sh
+npm build
+npm start
+```
+
+### Swagger Documentation
+
+`GET /api-docs`
+
+### Built-in Middleware
+
+- Logger Middleware (method, IP, URL, and timestamp).
+
+### Error Handler Middleware
+
+- Handles errors and logs them to a date-based file inside logs/.
