@@ -2,7 +2,6 @@ import express from "express";
 import { createUser, deleteUser, getUserById, getUsers } from "../controllers";
 import { validateUser, validateUserId } from "../middlewares";
 
-
 export const userRoutes = express.Router();
 
 /**

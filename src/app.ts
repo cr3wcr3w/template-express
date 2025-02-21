@@ -5,7 +5,6 @@ import { errorHandler, limiter, logger, speedLimiter } from "./v1/middlewares";
 import { userRoutes } from "./v1/routes";
 import { swaggerSpec } from "./v1/config";
 
-
 // Load environment variables
 dotenv.config();
 const port = process.env.DB_EXPRESS_PORT;
