@@ -1,12 +1,9 @@
 import express, { Request, Response } from "express";
-import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import { errorHandler, limiter, logger, speedLimiter } from "./v1/middlewares";
 import { userRoutes } from "./v1/routes";
 import { swaggerSpec } from "./v1/config";
 
-// Load environment variables
-dotenv.config();
 const port = process.env.DB_EXPRESS_PORT;
 
 // Initialize Express app
@@ -17,7 +14,7 @@ app.use(express.json());
 app.use(logger);
 
 // Entry Endpoint
-app.get("/", (req: Request, res: Response) => {
+app.get("/api/v1", (req: Request, res: Response) => {
   res.json({
     name: "Test API",
     version: "1.0.0",
