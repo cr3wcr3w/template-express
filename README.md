@@ -32,11 +32,3 @@ npm start
 ### Swagger Documentation
 
 `GET /api-docs`
-
-### Built-in Middleware
-
-- Logger Middleware (method, IP, URL, and timestamp).
-
-### Error Handler Middleware
-
-- Handles errors and logs them to a date-based file inside logs/.
