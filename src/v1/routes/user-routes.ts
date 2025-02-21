@@ -1,13 +1,9 @@
 import express from "express";
-import {
-  createUser,
-  getUserById,
-  getUsers,
-  deleteUser,
-} from "../controllers/user-controller";
+import { createUser, deleteUser, getUserById, getUsers } from "../controllers";
 import { validateUser, validateUserId } from "../middlewares";
 
-const router = express.Router();
+
+export const userRoutes = express.Router();
 
 /**
  * @swagger
@@ -26,7 +22,7 @@ const router = express.Router();
  *       200:
  *         description: List of all users
  */
-router.get("/", getUsers);
+userRoutes.get("/", getUsers);
 
 /**
  * @swagger
@@ -47,7 +43,7 @@ router.get("/", getUsers);
  *       404:
  *         description: User not found
  */
-router.get("/:id", validateUserId, getUserById);
+userRoutes.get("/:id", validateUserId, getUserById);
 
 /**
  * @swagger
@@ -69,7 +65,7 @@ router.get("/:id", validateUserId, getUserById);
  *       201:
  *         description: User created successfully
  */
-router.post("/", validateUser, createUser);
+userRoutes.post("/", validateUser, createUser);
 
 /**
  * @swagger
@@ -90,6 +86,4 @@ router.post("/", validateUser, createUser);
  *       404:
  *         description: User not found
  */
-router.delete("/:id", validateUserId, deleteUser);
-
-export default router;
+userRoutes.delete("/:id", validateUserId, deleteUser);

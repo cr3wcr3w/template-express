@@ -1,9 +1,10 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
-import swaggerSpec from "./v1/config/swagger-config";
-import { logger, errorHandler, limiter, speedLimiter } from "./v1/middlewares";
-import userRoutes from "./v1/routes/user-routes";
+import { errorHandler, limiter, logger, speedLimiter } from "./v1/middlewares";
+import { userRoutes } from "./v1/routes";
+import { swaggerSpec } from "./v1/config";
+
 
 // Load environment variables
 dotenv.config();
