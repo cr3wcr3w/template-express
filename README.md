@@ -31,4 +31,4 @@ npm start
 
 ### Swagger Documentation
 
-`GET /api-docs`
+`GET /api/v1/docs`
