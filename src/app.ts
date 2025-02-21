@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./v1/config/swagger-config";
-import { logger, errorHandler } from "./v1/middlewares";
+import { logger, errorHandler, limiter, speedLimiter } from "./v1/middlewares";
 
 // Load environment variables
 dotenv.config();
@@ -25,6 +25,10 @@ app.get("/", (req: Request, res: Response) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+// Rate Limit Middleware to /api/*
+app.use("/api", limiter);
+app.use("/api", speedLimiter);
 
 // Define API Routes
 // app.use()
