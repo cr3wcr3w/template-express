@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 import swaggerSpec from "./v1/config/swagger-config";
 import { logger, errorHandler, limiter, speedLimiter } from "./v1/middlewares";
+import userRoutes from "./v1/routes/user-routes";
 
 // Load environment variables
 dotenv.config();
@@ -27,14 +28,15 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Rate Limit Middleware to /api/*
-app.use("/api", limiter);
-app.use("/api", speedLimiter);
+app.use("/api/v1", limiter);
+app.use("/api/v1", speedLimiter);
 
 // Define API Routes
 // app.use()
+app.use("/api/v1/users", userRoutes);
 
 // Swagger Docs Middleware
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Error Handling Middleware
 app.use(errorHandler);
