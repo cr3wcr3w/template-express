@@ -5,6 +5,7 @@ import {
   getUsers,
   deleteUser,
 } from "../controllers/user-controller";
+import { validateUser, validateUserId } from "../middlewares";
 
 const router = express.Router();
 
@@ -46,7 +47,7 @@ router.get("/", getUsers);
  *       404:
  *         description: User not found
  */
-router.get("/:id", getUserById);
+router.get("/:id", validateUserId, getUserById);
 
 /**
  * @swagger
@@ -68,7 +69,7 @@ router.get("/:id", getUserById);
  *       201:
  *         description: User created successfully
  */
-router.post("/", createUser);
+router.post("/", validateUser, createUser);
 
 /**
  * @swagger
@@ -89,6 +90,6 @@ router.post("/", createUser);
  *       404:
  *         description: User not found
  */
-router.delete("/:id", deleteUser);
+router.delete("/:id", validateUserId, deleteUser);
 
 export default router;
