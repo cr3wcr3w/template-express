@@ -1,4 +1,4 @@
-export * from "./error-handler";
-export * from "./logger-handler";
-export * from "./rate-limit";
+export * from "./error-middleware";
+export * from "./logger-middleware";
+export * from "./rate-limit-middleware";
 export * from "./user-validation";
