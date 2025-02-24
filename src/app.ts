@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import swaggerUi from "swagger-ui-express";
-import { errorHandler, limiter, logger, speedLimiter } from "./v1/middlewares";
+import { authorizationHandler, errorHandler, limiter, logger, speedLimiter } from "./v1/middlewares";
 import { userRoutes } from "./v1/routes";
 import { swaggerSpec } from "./v1/config";
 
@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(logger);
 
 // Entry Endpoint
-app.get("/api/v1", (req: Request, res: Response) => {
+app.get("/api/v1", authorizationHandler, (req: Request, res: Response) => {
   res.json({
     name: "Test API",
     version: "1.0.0",
