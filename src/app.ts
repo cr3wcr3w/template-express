@@ -8,6 +8,7 @@ import {
   logger,
   speedLimiter,
 } from "./shared/middlewares";
+import { authorizationHandler } from "./v1/middlewares";
 
 const port = process.env.DB_EXPRESS_PORT;
 
