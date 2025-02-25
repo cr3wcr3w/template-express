@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import fs from "fs";
 import path from "path";
 
-const API_VERSION = "v1"; // Change this based on your API version
+const API_VERSION = "v1";
 
 /**
  * Global error handling middleware for Express.
@@ -12,7 +12,6 @@ export function errorHandler(
   err: Error,
   req: Request,
   res: Response,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   next: NextFunction,
 ) {
   const timestamp = new Date().toISOString();
@@ -44,6 +43,8 @@ Method: ${req.method} | URL: ${req.originalUrl} | IP: ${ip} | User-Agent: ${user
   res.status(500).json({
     message: "Internal Server Error",
   });
+
+  next();
 }
 
 // app.get('/api/v1/error-test', (req, res, next) => {
