@@ -2,7 +2,12 @@ import express, { Request, Response } from "express";
 import swaggerUi from "swagger-ui-express";
 import { userRoutes } from "./v1/routes";
 import { swaggerSpec } from "./v1/config";
-import { errorHandler, limiter, logger, speedLimiter } from "./shared/middlewares";
+import {
+  errorHandler,
+  limiter,
+  logger,
+  speedLimiter,
+} from "./shared/middlewares";
 
 const port = process.env.DB_EXPRESS_PORT;
 
@@ -28,8 +33,8 @@ app.get("/api/v1", (req: Request, res: Response) => {
 
 // v1 API Routes
 app.use("/api/v1/users", userRoutes);
-app.get('/api/v1/error-test', (req, res, next) => {
-  next(new Error('Something went wrong!'));
+app.get("/api/v1/error-test", (req, res, next) => {
+  next(new Error("Something went wrong!"));
 });
 
 // v1 Swagger Docs Middleware
