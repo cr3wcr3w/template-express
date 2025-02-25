@@ -1,14 +1,13 @@
 import express, { Request, Response } from "express";
 import swaggerUi from "swagger-ui-express";
+import { userRoutes } from "./v1/routes";
+import { swaggerSpec } from "./v1/config";
 import {
-  authorizationHandler,
   errorHandler,
   limiter,
   logger,
   speedLimiter,
-} from "./v1/middlewares";
-import { userRoutes } from "./v1/routes";
-import { swaggerSpec } from "./v1/config";
+} from "./shared/middlewares";
 
 const port = process.env.DB_EXPRESS_PORT;
 
@@ -18,6 +17,8 @@ const app = express();
 // Global Middleware
 app.use(express.json());
 app.use(logger);
+app.use(limiter);
+app.use(speedLimiter);
 
 // Entry Endpoint
 app.get("/api/v1", authorizationHandler, (req: Request, res: Response) => {
@@ -30,18 +31,16 @@ app.get("/api/v1", authorizationHandler, (req: Request, res: Response) => {
   });
 });
 
-// Rate Limit Middleware to /api/*
-app.use("/api/v1", limiter);
-app.use("/api/v1", speedLimiter);
-
-// Define API Routes
-// app.use()
+// v1 API Routes
 app.use("/api/v1/users", userRoutes);
+app.get("/api/v1/error-test", (req, res, next) => {
+  next(new Error("Something went wrong!"));
+});
 
-// Swagger Docs Middleware
+// v1 Swagger Docs Middleware
 app.use("/api/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Error Handling Middleware
+// Global Error Handling Middleware
 app.use(errorHandler);
 
 // Start Server
